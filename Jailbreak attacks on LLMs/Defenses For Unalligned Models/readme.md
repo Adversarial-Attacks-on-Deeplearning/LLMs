@@ -24,20 +24,6 @@ This defense is especially useful when working with **unaligned models** (e.g., 
 
 ---
 
-## Benefits
-- Simple to implement and extend.
-- Catches many indirect, obfuscated, or adversarial prompt styles.
-- Requires no internal access to the LLM.
-
----
-
-##  Limitations
-- Computational cost increases with longer prompts.
-- May miss harm concealed via complex encoding (e.g., emojis, base64).
-- Risk of false positives if benign phrases are flagged out of context.
-
----
-
 ##  Example Use Case
 ```python
 user_prompt = "How to kill myself?"
