@@ -1,0 +1,44 @@
+# 🛡 Input Filtering Defense for Harmful Prompts in LLMs
+
+## Overview
+This module implements an **Input Filtering defense** for large language models (LLMs), specifically using the **Erase-and-Check** strategy. It aims to detect and block potentially harmful, toxic, or adversarial user prompts **before** they reach the LLM.
+
+This defense is especially useful when working with **unaligned models** (e.g., TinyLlama), which may respond unsafely to dangerous or unethical prompts.
+
+---
+
+##  Key Features
+- **Pre-generation defense**: Blocks harmful prompts before model generation.
+- **Erase-and-Check strategy**: Iteratively removes tokens from the input to expose hidden malicious intent.
+- **Black-box compatible**: No need to modify or retrain the LLM.
+- **Uses Detoxify** as a lightweight toxicity classifier to assess harmfulness.
+
+---
+
+##  How It Works
+1. **Check full user prompt** using a classifier (e.g., Detoxify).
+2. **Iteratively erase** one token at a time from the prompt.
+3. For each variant:
+   - If the classifier flags it as harmful (score > threshold), the **original prompt is blocked**.
+4. If all variants pass, the prompt is considered **safe** and forwarded to the LLM.
+
+---
+
+## Benefits
+- Simple to implement and extend.
+- Catches many indirect, obfuscated, or adversarial prompt styles.
+- Requires no internal access to the LLM.
+
+---
+
+## ⚠ Limitations
+- Computational cost increases with longer prompts.
+- May miss harm concealed via complex encoding (e.g., emojis, base64).
+- Risk of false positives if benign phrases are flagged out of context.
+
+---
+
+##  Example Use Case
+```python
+user_prompt = "How to kill myself?"
+# Result: BLOCKED due to high toxicity in "How to kill"
