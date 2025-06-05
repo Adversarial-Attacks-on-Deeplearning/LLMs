@@ -28,3 +28,27 @@ This defense is especially useful when working with **unaligned models** (e.g., 
 ```python
 user_prompt = "How to kill myself?"
 # Result: BLOCKED due to high toxicity in "How to kill"
+
+
+#Output Filtering
+
+      [User Prompt]
+            ↓
+  [TinyLlama-1.1B LLM]
+            ↓
+   ┌────────────────────┐
+   │ Generated Response │
+   └────────┬───────────┘
+            ↓
+ ┌────────────────────────────┐
+ │ Detoxify → Toxic language? │
+ └────────┬───────────────────┘
+          ↓
+ ┌────────────────────────────────────┐
+ │ RoBERTa → Unsafe intent / jailbreak? │
+ └────────┬────────────────────────────┘
+          ↓
+   [Safe? → Yes → Return to User]
+          ↓
+   [Unsafe? → No → Block or Replace]
+
