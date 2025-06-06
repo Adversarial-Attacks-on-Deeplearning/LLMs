@@ -53,7 +53,7 @@ user_prompt = "How to kill myself?"
  └────────┬───────────────────┘
           ↓
  ┌────────────────────────────────────┐
- │ RoBERTa → Unsafe intent / jailbreak? │
+ │  Fine-tuned DistilBERT → Unsafe intent / jailbreak? │
  └────────┬────────────────────────────┘
           ↓
    [Safe? → Yes → Return to User]
