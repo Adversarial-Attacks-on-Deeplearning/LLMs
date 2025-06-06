@@ -36,10 +36,10 @@ user_prompt = "How to kill myself?"
 ```
 
 
-# FIRST DEFENSIVE METHOD
+# SECOND DEFENSIVE METHOD
 
 # Output Filtering
-
+```python
       [User Prompt]
             ↓
   [TinyLlama-1.1B LLM]
@@ -60,3 +60,4 @@ user_prompt = "How to kill myself?"
           ↓
    [Unsafe? → No → Block or Replace]
 
+```
