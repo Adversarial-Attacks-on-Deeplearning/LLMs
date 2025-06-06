@@ -1,4 +1,8 @@
-#  Input Filtering Defense for Harmful Prompts in LLMs
+
+
+# FIRST DEFENSIVE METHOD
+
+# Input Filtering Defense for Harmful Prompts in LLMs
 
 ## Overview
 This module implements an **Input Filtering defense** for large language models (LLMs), specifically using the **Erase-and-Check** strategy. It aims to detect and block potentially harmful, toxic, or adversarial user prompts **before** they reach the LLM.
@@ -29,6 +33,10 @@ This defense is especially useful when working with **unaligned models** (e.g., 
 user_prompt = "How to kill myself?"
 # Result: BLOCKED due to high toxicity in "How to kill"
 
+```
+
+
+#SECOND DEFENSIVE METHOD
 
 #Output Filtering
 
