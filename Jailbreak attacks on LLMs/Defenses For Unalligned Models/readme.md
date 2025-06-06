@@ -36,9 +36,9 @@ user_prompt = "How to kill myself?"
 ```
 
 
-#SECOND DEFENSIVE METHOD
+# FIRST DEFENSIVE METHOD
 
-#Output Filtering
+# Output Filtering
 
       [User Prompt]
             ↓
