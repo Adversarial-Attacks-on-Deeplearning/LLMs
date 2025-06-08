@@ -61,7 +61,7 @@ user_prompt = "How to kill myself?"
    [Unsafe? → No → Block or Replace]
 
 ```
-##Dataset used for Fine-Tuning DistilBert:
+## Dataset used for Fine-Tuning DistilBert:
 3880 Total Samples
 
 1940 safe samples
