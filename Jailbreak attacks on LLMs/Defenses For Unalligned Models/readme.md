@@ -62,19 +62,31 @@ user_prompt = "How to kill myself?"
 
 ```
 ## Dataset used for Fine-Tuning DistilBert:
+
 3880 Total Samples
 
-1940 safe samples
-[1- 1925 from Quora Questions Dataset   
+1940 safe samples:
 
- 2-15 Tricky Safe Prompts added manually
+[
+
+1- 1925 from Quora Questions Dataset   
+
+
+2- 15 Tricky Safe Prompts added manually
+
  ]
 
-1940 harmful samples
-[1- 520 from Advbench Dataset
+
+1940 harmful samples:
+[
+
+1-  520 from Advbench Dataset
+
+
 
 2-  1405 from JailbreakHub
 
 
-3- 15 tricky jailbreak prompts added manually
+
+3-  15 tricky jailbreak prompts added manually
 ]
