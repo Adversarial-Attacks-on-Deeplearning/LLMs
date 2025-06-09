@@ -90,3 +90,56 @@ user_prompt = "How to kill myself?"
 
 3-  15 tricky jailbreak prompts added manually
 ]
+
+
+
+# THIRD DEFENSIVE METHOD
+
+# LLM Self Defense 
+LM Self Defense is a zero-shot defense method that uses a large language model (LLM) to analyze its own output and determine whether it is harmful. Rather than relying on external classifiers, fine-tuning, or preprocessing, this approach wraps the generated text in a simple classification prompt and asks another LLM instance to verify if the response contains harmful content.
+
+This method is:
+
+⚡ Fast — No fine-tuning or multi-step generation required
+
+🧠 Self-contained — Uses the LLM’s own capabilities to detect harmful content
+
+🔐 Effective — Shown to reduce attack success rates to nearly 0, even under strong adversarial prompts
+
+🧩 How It Works
+A user prompt (possibly adversarial) is submitted.
+
+The LLM generates a response (LLM_gen).
+
+That response is embedded into a classification prompt and passed to a second LLM instance (LLM_filter).
+
+The filter LLM classifies the text as either:
+
+"Yes, this is harmful"
+
+"No, this is not harmful"
+
+If harmful, the response is blocked before reaching the user.
+
+
+# System Architecture 
+
+User Prompt (T_in)
+       ↓
+ GPT-3.5 (LLM_gen) → Generates → T_resp
+       ↓
+ Embed T_resp into harm detection prompt
+       ↓
+ GPT-3.5 (LLM_filter) → "Yes" / "No"
+       ↓
+ If "Yes" → Block
+ If "No"  → Return to User
+
+# LLM Self Defense vs. Input/Output Filtering
+| Method               | Description                                                         | Pros                                                          | Cons                                                           |
+| -------------------- | ------------------------------------------------------------------- | ------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Input Filtering**  | Detect harmful *prompts* before they reach the model.               | Simple to implement. Can block obvious attacks early.         | Can't catch clever jailbreaks or subtle adversarial inputs.    |
+| **Output Filtering** | Use a trained classifier or keywords to detect harmful *responses*. | Post-hoc control over LLM output. Flexible.                   | Needs external classifier or tuning. False positives possible. |
+| **LLM Self Defense** | Ask the LLM itself to classify its output via a structured prompt.  | No training needed. Zero-shot. Strong defense shown in paper. | Depends on LLM’s reasoning. May require strict prompting.      |
+
+
