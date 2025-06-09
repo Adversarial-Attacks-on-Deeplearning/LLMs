@@ -122,9 +122,9 @@ The filter LLM classifies the text as either:
 If harmful, the response is blocked before reaching the user.
 
 
-# System Architecture 
-
-User Prompt (T_in)
+# LLM Self Defense Pipeline 
+```python
+      User Prompt (T_in)
        ↓
  GPT-3.5 (LLM_gen) → Generates → T_resp
        ↓
@@ -134,6 +134,8 @@ User Prompt (T_in)
        ↓
  If "Yes" → Block
  If "No"  → Return to User
+
+```
 
 # LLM Self Defense vs. Input/Output Filtering
 | Method               | Description                                                         | Pros                                                          | Cons                                                           |
